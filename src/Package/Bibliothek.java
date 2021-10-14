@@ -22,13 +22,14 @@ public class Bibliothek {
     }
 
     public String getMostReadBook(){
-        int max = Bücher[0].getNumberOfReader();
-        String name = Bücher[0].getTitel();
+        int max = 0;
+        String name = "";
         for (int i = 1; i < Bücher.length ; i++) {
 
             if(max < Bücher[i].getNumberOfReader())
             {
                 max = Bücher[i].getNumberOfReader();
+                name = Bücher[i].getTitel();
             }
         }
         name = "Titel: "+ name + " " + max;
@@ -38,8 +39,17 @@ public class Bibliothek {
 
 
     public void borrowBook(int i){
-        Bücher[i].setNumberOfReader(Bücher[i].getNumberOfReader()+1);
-        Bücher[i].setBorrowed(true);
+        if(Bücher[i].isBorrowed() == false){
+            Bücher[i].setNumberOfReader(Bücher[i].getNumberOfReader()+1);
+            Bücher[i].setBorrowed(true);
+            System.out.println("Buch: " + i);
+            System.out.println(Bücher[i].getNumberOfReader());
+            System.out.println("Wurde Ausgeliehen ");
+        }else {
+
+            System.out.println("Buch schon Ausgeliehen ");
+        }
+
     }
     public void returnBook(int i){
         Bücher[i].setBorrowed(false);
