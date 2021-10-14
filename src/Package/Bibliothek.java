@@ -21,8 +21,9 @@ public class Bibliothek {
         }
     }
 
-    public int getMostReadBook(){
+    public String getMostReadBook(){
         int max = Bücher[0].getNumberOfReader();
+        String name = Bücher[0].getTitel();
         for (int i = 1; i < Bücher.length ; i++) {
 
             if(max < Bücher[i].getNumberOfReader())
@@ -30,7 +31,9 @@ public class Bibliothek {
                 max = Bücher[i].getNumberOfReader();
             }
         }
-        return max;
+        name = "Titel: "+ name + " " + max;
+        return name;
+
     }
 
 
